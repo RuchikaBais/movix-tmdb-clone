@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import Img from '../../../components/lazyLoadImage/Img'
 import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
 import './style.scss'
+import bg2 from '../../../assets/bg2.jpg';
 
 
 function HeroSection() {
@@ -17,7 +18,8 @@ function HeroSection() {
   const { data, loading } = useFetch("/movie/upcoming")
 
   useEffect(() => {
-    const bg = url.backdrop + data?.results[Math.floor(Math.random() * 20)].backdrop_path;
+        const bg = url?.backdrop ? (url?.backdrop + data?.results[Math.floor(Math.random() * 20)]?.backdrop_path) : bg2  ;
+
     setbackground(bg);
 
   }, [data])
